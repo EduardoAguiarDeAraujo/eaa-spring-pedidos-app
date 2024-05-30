@@ -1,7 +1,9 @@
 # Microservice de Pedidos
 
 ## Criando um container MySQL
+```text
 docker run -d --name mysqldb -p 3306:3306 -e "MYSQL_ROOT_PASSWORD=root" -v C:\Workspace\docker_volumes\mysql:/var/lib/mysql mysql
+```
 
 ## Configurando o arquivo application.properties
 ```text
