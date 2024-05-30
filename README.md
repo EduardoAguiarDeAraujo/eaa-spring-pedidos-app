@@ -1,8 +1,20 @@
 # Microservice de Pedidos
 
-## Criando um container MySQL
+## Criando um Container MySQL
 ```text
 docker run -d --name mysqldb -p 3306:3306 -e "MYSQL_ROOT_PASSWORD=root" -v C:\Workspace\docker_volumes\mysql:/var/lib/mysql mysql
+```
+
+## Consultando o banco de dados
+```text
+docker ps
+docker exec -it <id-do_container> bash
+mysql -u root -p
+Enter password:
+show databases;
+use db-pedidos;
+show tables;
+describe pedidos;
 ```
 
 ## Configurando o arquivo application.properties
@@ -14,7 +26,7 @@ spring.jpa.database-platform=org.hibernate.dialect.MySQL8Dialect
 spring.jpa.hibernate.ddl-auto=update
 ```
 
-## Criando um arquivo .jar com o Maven
+## Criando o arquivo .jar com o Maven
 ```text
 mvn clean
 mvn package
@@ -28,7 +40,7 @@ COPY ${JAR_FILE} app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
 ```
 
-## Criando a imagem Docker e publicando no Docker Hub
+## Criando a imagem docker e publicando no docker hub
 ```text
 docker build -t eduardoaguiardearaujo/pedidos-app:1.0 .
 docker push eduardoaguiardearaujo/pedidos-app:1.0
